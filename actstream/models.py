@@ -87,7 +87,7 @@ class Action(models.Model):
         ContentType, related_name='actor',
         on_delete=models.CASCADE, db_index=True
     )
-    actor_object_id = models.CharField(max_length=255, db_index=True)
+    actor_object_id = models.PositiveIntegerField(db_index=True)
     actor = generic.GenericForeignKey('actor_content_type', 'actor_object_id')
 
     verb = models.CharField(max_length=255, db_index=True)
@@ -98,8 +98,8 @@ class Action(models.Model):
         related_name='target',
         on_delete=models.CASCADE, db_index=True
     )
-    target_object_id = models.CharField(
-        max_length=255, blank=True, null=True, db_index=True
+    target_object_id = models.PositiveIntegerField(
+        blank=True, null=True, db_index=True
     )
     target = generic.GenericForeignKey('target_content_type',
                                        'target_object_id')
@@ -109,8 +109,8 @@ class Action(models.Model):
         related_name='action_object',
         on_delete=models.CASCADE, db_index=True
     )
-    action_object_object_id = models.CharField(
-        max_length=255, blank=True, null=True, db_index=True
+    action_object_object_id = models.PositiveIntegerField(
+        blank=True, null=True, db_index=True
     )
     action_object = generic.GenericForeignKey('action_object_content_type',
                                               'action_object_object_id')
