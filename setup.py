@@ -1,4 +1,4 @@
-from distutils.core import setup
+from setuptools import setup
 from actstream import __version__
 
 setup(name='django-activity-stream',
@@ -23,6 +23,7 @@ setup(name='django-activity-stream',
                 ],
       package_data={'actstream': ['locale/*/LC_MESSAGES/*.po',
                                   'templates/actstream/*.html']},
+      install_requires=['jsonfield>=2.0.2', 'django-jsonfield-compat>=0.4.4'],
       classifiers=['Development Status :: 5 - Production/Stable',
                    'Environment :: Web Environment',
                    'Framework :: Django',
