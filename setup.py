@@ -1,4 +1,7 @@
-from setuptools import setup
+try:
+    from setuptools import setup
+except ImportError:
+    from distutils.core import setup
 from actstream import __version__
 
 setup(name='django-activity-stream',
@@ -14,12 +17,6 @@ setup(name='django-activity-stream',
                 'actstream.migrations',
                 'actstream.templatetags',
                 'actstream.tests',
-                'actstream.runtests',
-                'actstream.runtests.testapp',
-                'actstream.runtests.testapp.migrations',
-                'actstream.runtests.testapp_nested',
-                'actstream.runtests.testapp_nested.migrations',
-                'actstream.runtests.testapp_nested.models',
                 ],
       package_data={'actstream': ['locale/*/LC_MESSAGES/*.po',
                                   'templates/actstream/*.html']},
@@ -33,4 +30,8 @@ setup(name='django-activity-stream',
                    'Programming Language :: Python',
                    'Programming Language :: Python :: 3',
                    'Topic :: Utilities'],
+      extras_require={
+        'jsonfield': ['django-jsonfield>=1.0.1',
+                      'django-jsonfield-compat>=0.4.4'],
+      },
       )
